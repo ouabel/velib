@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vélib'</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/slider.css">
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, author-scalable=0'>
+</head>
+<body>
+  <header>
+    <img src="images/logo.png" />
+    <label for="menu" class="menu">
+    <input id="menu" type="checkbox" name="menu">
+    <nav>
+      <ul>
+        <li><a href="?">Accueil</a></li>
+        <li><a href="#">À propos</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    </label>
+  </header>
+  <div id="container">
+    <h2>Comment ça marche ?</h2>
+    <section id="slider">
+      <input class="pagination" id="page1" type="radio" name="pages" checked>
+      <label class="pages" for="page1"> 1 </label>
+      <input class="pagination" id="page2" type="radio" name="pages">
+      <label class="pages" for="page2"> 2 </label>
+      <input class="pagination" id="page3" type="radio" name="pages">
+      <label class="pages" for="page3"> 3 </label>
+      <input class="pagination" id="page4" type="radio" name="pages">
+      <label class="pages" for="page4"> 4 </label>
+
+      <span id="go_left" ></span>
+      <span id="go_right" ></span>
+      <div id="slides">
+        <article class="slide" id="slide1">
+          <h3>Etape 1: Choisissez un emplacement</h3>
+          <div>
+            <img src="images/1.png" alt=""/>
+            <p>Dans la carte ci-dessous cliquez sur un numéro qui regroupe plusieurs stations, ou vous pouvez utiliser les boutons de zoom pour voir les stations dans un endroit</p>
+          </div>
+        </article>
+        <article class="slide" id="slide2">
+          <h3>Etape 2: Sélectionnez une station</h3>
+          <div>
+            <img src="images/2.png" alt=""/>
+            <p>Afficher les détails d'une station en cliquant dessus, si la station est ouverte et qu'elle a des vélos disponibles, vous pouvez cliquer sur le bouton "réserve" pour faire une réservation.</p>
+          </div>
+        </article>
+        <article class="slide" id="slide3">
+          <h3>Etape 3: Finaliser une réservation</h3>
+          <div>
+            <img src="images/3.png" alt=""/>
+            <p>Après avoir cliqué sur le bouton "réserver", une zone de signature apparaît, signez et cliquez sur "confirmer". Une réservation est faite pour vous et vous avez 20 minutes pour récupérer votre vélo</p>
+          </div>
+        </article>
+        <article class="slide" id="slide4">
+          <h3>Etape 4: Annuler une réservation</h3>
+          <div>
+            <img src="images/4.png" alt=""/>
+            <p>Vous pouvez à tout moment annuler votre réservation en cliquant sur le bouton "annuler" dans le pied de page. Si vous faites une autre réservation, elle remplacera l'actuelle.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+    <button class="toggled" id="show_map">Carte</button>
+    <button class="toggle" id="show_station" disabled>Station</button>
+    <section id="velib">
+      <article id="map">
+        <p id="legend">
+          <span class="opened">Ouverte</span>
+          <span class="closed">Fermée</span>
+          <span class="selected">Sélectionnée</span>
+          <span class="reservation">Réservation</span>
+        </p>
+        <div id="google_map"></div>
+      </article>
+      <article id="station_info">
+        <span id="title"></span>
+        Etat de la station: <span id="is_renting_fr"></span><br/>
+              Adresse: <span id="address"></span><br/>
+              Place(s) disponible(s): <span id="numdocksavailable"></span><br/>
+              Vélo(s) disponible(s): <span id="numbikesavailable"></span><br />
+              <span id="note"></span>
+        <button class="button" id="book" disabled>Réserver</button>
+            <div id="signature">
+              <p>Veuillez signer ci-dessous pour compléter votre réservation</p>
+              <canvas id="canvas" width="259px" height="154px"></canvas>
+          <button class="button" id="confirm" >Confirmer</button>
+          <button class="button" id="erase">Effacer</button>
+          <button class="button" id="cancel">Annuler</button>
+        </div>
+      </article>
+    </section>
+    <footer></footer>
+  </div>
+  <div id="booking">
+    <p>Un vélo réservé à la station <span id="station_name"></span> pour <span id="count_down_m"></span> minute(s) et <span id="count_down_s"></span> seconde(s) <button class="button" id="remove">Annuler</button></p>
+  </div>
+  <script src="js/style.js"></script>
+  <script src="js/slider.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/station.js"></script>
+  <script src="js/reservation.js"></script>
+  <script src="js/signature.js"></script>
+  <script src="js/main.js"></script>
+  <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPKEuLUslCxeYS6izjh0VqFunG9CbMpww&callback=appMap.init">
+  </script>
+</body>
+</html>
